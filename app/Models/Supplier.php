@@ -27,12 +27,12 @@ class Supplier extends Model
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'integer',
-        ];
-    }
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'id' => 'integer',
+    //     ];
+    // }
 
     public function products(): HasMany
     {

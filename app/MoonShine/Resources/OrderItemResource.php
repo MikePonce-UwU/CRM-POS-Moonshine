@@ -21,7 +21,7 @@ class OrderItemResource extends ModelResource
     protected string $model = OrderItem::class;
 
     protected string $title = 'OrderItems';
-    
+
     /**
      * @return list<FieldContract>
      */
@@ -40,6 +40,8 @@ class OrderItemResource extends ModelResource
         return [
             Box::make([
                 ID::make(),
+                \MoonShine\Laravel\Fields\Relationships\BelongsTo::make('Producto', 'product', resource: ProductResource::class),
+                \MoonShine\UI\Fields\Number::make('Cantidad', 'quantity'),
             ])
         ];
     }

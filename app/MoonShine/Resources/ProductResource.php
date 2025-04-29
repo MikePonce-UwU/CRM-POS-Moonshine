@@ -41,6 +41,9 @@ class ProductResource extends ModelResource
     protected bool $deleteInModal = true;
     protected bool $detailInModal = true;
 
+    protected ?\MoonShine\Support\Enums\PageType $redirectAfterSave = \MoonShine\Support\Enums\PageType::INDEX;
+
+
     /**
      * @return list<FieldContract>
      */
@@ -75,10 +78,6 @@ class ProductResource extends ModelResource
                 \MoonShine\Laravel\Fields\Relationships\BelongsTo::make('Proveedor', 'supplier', resource: SupplierResource::class),
                 \MoonShine\Laravel\Fields\Relationships\RelationRepeater::make('Imágenes', 'images', resource: ImageResource::class)
                     ->removable(),
-                // ->disk('products')
-                // ->allowedExtensions(['jpeg', 'png', 'jpg'])
-                // ->multiple()
-                // ->removable(),
             ])
         ];
     }
@@ -116,8 +115,6 @@ class ProductResource extends ModelResource
             'stock' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
             'supplier_id' => 'required|exists:suppliers,id',
-            // 'images' => 'nullable|array',
-            // 'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 
@@ -132,12 +129,12 @@ class ProductResource extends ModelResource
                 'Categoría',
                 'category',
                 resource: CategoryResource::class,
-            )->valuesQuery(static fn (\Illuminate\Contracts\Database\Eloquent\Builder $q) => $q->select(['id', 'name'])),
+            )->valuesQuery(static fn(\Illuminate\Contracts\Database\Eloquent\Builder $q) => $q->select(['id', 'name'])),
             \MoonShine\Laravel\Fields\Relationships\BelongsTo::make(
                 'Proveedor',
                 'supplier',
                 resource: SupplierResource::class,
-            )->valuesQuery(static fn (\Illuminate\Contracts\Database\Eloquent\Builder $q) => $q->select(['id', 'name'])),
+            )->valuesQuery(static fn(\Illuminate\Contracts\Database\Eloquent\Builder $q) => $q->select(['id', 'name'])),
         ];
     }
 }

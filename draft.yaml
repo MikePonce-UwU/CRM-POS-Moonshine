@@ -59,7 +59,6 @@ models:
     order_id: id
     product_id: id
     quantity: integer
-    price: decimal
     timestamps: false
 
   Image:

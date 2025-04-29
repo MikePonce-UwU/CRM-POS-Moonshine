@@ -65,12 +65,12 @@ final class MoonShineLayout extends CompactLayout
                 MenuItem::make('POS', POS::class),
                 // MenuItem::make('Sales', SaleResource::class),
                 MenuItem::make('Ventas', OrderResource::class),
+                // MenuItem::make('OrderItems', OrderItemResource::class),
             ]),
             \MoonShine\MenuManager\MenuGroup::make('CRM', [
                 MenuItem::make('Clientes', CustomerResource::class),
             ]),
             // MenuItem::make('Images', ImageResource::class),
-            MenuItem::make('OrderItems', OrderItemResource::class),
         ];
     }
 

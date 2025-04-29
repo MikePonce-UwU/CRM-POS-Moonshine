@@ -12,8 +12,13 @@ use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\ID;
 use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\MenuManager\Attributes\Order as AttributesOrder;
+use MoonShine\Support\Attributes\Icon;
 use MoonShine\Support\ListOf;
 
+#[Icon('square-3-stack-3d')]
+// #[Group('Inventario')]
+#[AttributesOrder(2)]
 /**
  * @extends ModelResource<Order>
  */
@@ -23,7 +28,7 @@ class OrderResource extends ModelResource
 
     protected string $title = 'Orders';
 
-    protected array $with = ['customer'];
+    protected array $with = ['customer', 'orderItems'];
     protected bool $simplePaginate = true;
 
     protected bool $columnSelection = true;
@@ -64,7 +69,7 @@ class OrderResource extends ModelResource
                 \MoonShine\UI\Fields\Number::make('# Orden', 'order_number'),
                 \MoonShine\Laravel\Fields\Relationships\BelongsTo::make('Cliente', 'customer', resource: CustomerResource::class),
                 \MoonShine\UI\Fields\Date::make('Fecha', 'order_date'),
-                \MoonShine\Laravel\Fields\Relationships\RelationRepeater::make('Productos', 'order_items', resource: OrderItemResource::class)
+                \MoonShine\Laravel\Fields\Relationships\RelationRepeater::make('Productos', 'orderItems', resource: OrderItemResource::class)
                     ->fields([
                         \MoonShine\Laravel\Fields\Relationships\BelongsTo::make('Producto', 'product', resource: ProductResource::class),
                         \MoonShine\UI\Fields\Number::make('Cantidad', 'quantity'),
@@ -90,7 +95,7 @@ class OrderResource extends ModelResource
             \MoonShine\UI\Fields\Number::make('# Orden', 'order_number'),
             \MoonShine\UI\Fields\Text::make('Cliente', 'customer.name'),
             \MoonShine\UI\Fields\Date::make('Fecha', 'order_date'),
-            \MoonShine\Laravel\Fields\Relationships\BelongsToMany::make('Productos', 'order_items', resource: OrderItemResource::class)
+            \MoonShine\Laravel\Fields\Relationships\BelongsToMany::make('Productos', 'orderItems', resource: OrderItemResource::class)
                 ->fields([
                     \MoonShine\UI\Fields\Number::make('Cantidad', 'quantity'),
                     \MoonShine\UI\Fields\Text::make('Precio', 'product.price'),

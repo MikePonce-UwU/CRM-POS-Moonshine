@@ -36,15 +36,15 @@ class Order extends Model
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'integer',
-            'customer_id' => 'integer',
-            'order_date' => 'date',
-            'total_amount' => 'decimal',
-        ];
-    }
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'id' => 'integer',
+    //         'customer_id' => 'integer',
+    //         'order_date' => 'date',
+    //         'total_amount' => 'decimal',
+    //     ];
+    // }
 
     public function customer(): BelongsTo
     {

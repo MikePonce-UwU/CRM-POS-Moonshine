@@ -42,6 +42,8 @@ class CategoryResource extends ModelResource
     protected bool $deleteInModal = true;
     protected bool $detailInModal = true;
 
+protected ?\MoonShine\Support\Enums\PageType $redirectAfterSave = \MoonShine\Support\Enums\PageType::INDEX;
+
     /**
      * @return list<FieldContract>
      */

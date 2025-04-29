@@ -31,16 +31,16 @@ class Product extends Model
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'integer',
-            'price' => 'decimal:2',
-            'category_id' => 'integer',
-            'supplier_id' => 'integer',
-        ];
-    }
-    
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'id' => 'integer',
+    //         'price' => 'decimal:2',
+    //         'category_id' => 'integer',
+    //         'supplier_id' => 'integer',
+    //     ];
+    // }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

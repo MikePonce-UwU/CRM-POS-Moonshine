@@ -29,13 +29,13 @@ class Contact extends Model
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'integer',
-            'customer_id' => 'integer',
-        ];
-    }
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'id' => 'integer',
+    //         'customer_id' => 'integer',
+    //     ];
+    // }
 
     public function customer(): BelongsTo
     {

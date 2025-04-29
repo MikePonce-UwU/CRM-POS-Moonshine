@@ -26,7 +26,6 @@ class OrderItem extends Model
         'order_id',
         'product_id',
         'quantity',
-        'price',
     ];
 
     /**
@@ -34,15 +33,14 @@ class OrderItem extends Model
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'integer',
-            'order_id' => 'integer',
-            'product_id' => 'integer',
-            'price' => 'decimal',
-        ];
-    }
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'id' => 'integer',
+    //         'order_id' => 'integer',
+    //         'product_id' => 'integer',
+    //     ];
+    // }
 
     public function order(): BelongsTo
     {
